@@ -1,0 +1,23 @@
+# -----------------------------------------
+# MATLAB Autosave and Backup Files
+# -----------------------------------------
+*.asv
+*.m~
+*.bak
+
+# -----------------------------------------
+# OS / Editor Junk Files
+# -----------------------------------------
+.DS_Store
+Thumbs.db
+
+# VS Code and editor settings (optional)
+.vscode/
+*.code-workspace
+
+# Jupyter cache (optional)
+.ipynb_checkpoints/
+
+# Logs and temp files
+*.log
+*.tmp
