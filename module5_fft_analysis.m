@@ -5,7 +5,7 @@
 %   - normalising magnitude to [0,1]
 
 clc;
-load('sensor_filtered_signals.mat');   % loads temp_true, temp_noisy, temp_filt, etc.
+load(fullfile('data', 'sensor_filtered_signals.mat'));   % loads temp_true, temp_noisy, temp_filt, etc.
 
 %% 1. Basic parameters
 N  = length(n);
@@ -94,7 +94,7 @@ ylabel('Normalised |X(f)|');
 grid on;
 
 %% 6. Save FFT results for the report or later modules (optional)
-save('sensor_fft_results.mat', ...
+save(fullfile('data', 'sensor_fft_results.mat'), ...
     'f', ...
     'FFT_temp_true', 'FFT_temp_noisy', 'FFT_temp_filt', ...
-    'FFT_hum_true', 'FFT_hum_noisy', 'FFT_hum_filt');
+    'FFT_hum_true',  'FFT_hum_noisy',  'FFT_hum_filt');

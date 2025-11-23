@@ -76,4 +76,6 @@ grid on;
 %% 6. Save variables for later modules
 % We will use temp_true and hum_true in Module 2 for adding noise,
 % and further filtering/prediction.
-save('sensor_true_signals.mat', 't', 'n', 'temp_true', 'hum_true', 'Fs');
+save(fullfile('data', 'sensor_true_signals.mat'), ...
+     't', 'n', 'temp_true', 'hum_true', 'Fs');
+
