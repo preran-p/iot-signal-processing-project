@@ -140,11 +140,15 @@ where
 ---
 
 ### 🔹 Module 5 — FFT Analysis
-Removes DC, computes FFT, normalizes the spectrum.
+Removes DC, computes FFT, and normalizes the spectrum.
+
+- DC (mean) is subtracted before FFT so the 0 Hz peak does not dominate.
+- Only the 0 to Fs/2 range is plotted and magnitudes are normalised to [0, 1] for clear comparison.
 
 **Outputs:**
 - Normalised FFT plots - figure_9.png, figure_10.png
 - `sensor_fft_results.mat`
+
 
 ---
 
