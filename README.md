@@ -1,66 +1,28 @@
-📘 IoT Sensor Signal Processing – Noise Reduction, Prediction & FFT Analysis (MATLAB Project)
-Signals and Systems (EC Minor Project)
+# IoT Sensor Signal Processing – Noise Reduction, Prediction & FFT Analysis
 
-Author: Your Name (NITK Surathkal)
-Course: Signals & Systems (EC Minor)
+Signals and Systems (EC Minor Project)    
 
-📌 Project Summary
+---
 
-This MATLAB project simulates IoT environmental sensor data (Temperature & Humidity), adds realistic noise, and then applies digital signal processing techniques to clean, analyze, and predict the sensor readings.
+## 1. Project Overview
 
-The project demonstrates core Signals & Systems concepts using a Computer Science + IoT application.
+This MATLAB project simulates IoT environmental sensor data (temperature and humidity), adds realistic noise, and applies digital signal processing techniques to clean, analyse, and predict the signals.
 
-🧠 What This Project Does
+Main tasks:
 
-This project performs the following:
+- Model clean temperature and humidity signals.
+- Add Gaussian noise, spikes, and drift.
+- Apply FIR, IIR, and Kalman filtering.
+- Select the best filter based on MSE.
+- Perform AR(1) prediction.
+- Analyse signals using FFT.
+- Save all results and figures.
 
-✔ 1. Sensor Signal Modeling (Temperature + Humidity)
+---
 
-Creates clean, noise-free IoT sensor signals with trends + sinusoidal variations.
+## 2. Repository Structure
 
-✔ 2. Noise Addition
-
-Adds realistic noise:
-
-Gaussian measurement noise
-
-Random spikes
-
-Drift (only for temperature)
-
-✔ 3. Filtering and Smoothing
-
-Applies:
-
-FIR Moving Average
-
-IIR Exponential Smoothing
-
-Kalman Filter (1-D)
-
-Compares them using MSE and selects the best filter.
-
-✔ 4. Prediction (AR(1) Model)
-
-Short-term prediction using autoregressive modeling.
-
-✔ 5. Frequency Domain Analysis (FFT)
-
-Plots:
-
-True signal spectrum
-
-Noisy spectrum
-
-Filtered spectrum
-
-With DC removal + normalisation so the plots are clearly visible.
-
-✔ 6. Results Export
-
-All figures saved automatically to the results/ folder.
-
-📁 Repository Structure
+```text
 .
 ├── module1_signal_modeling.m
 ├── module2_noise_addition.m
@@ -70,7 +32,7 @@ All figures saved automatically to the results/ folder.
 ├── run_all_modules.m
 ├── save_all_figures.m
 │
-├── data/     
+├── data/
 │   ├── sensor_true_signals.mat
 │   ├── sensor_noisy_signals.mat
 │   ├── sensor_filtered_signals.mat
@@ -82,290 +44,133 @@ All figures saved automatically to the results/ folder.
     ├── figure_2.png
     ├── ...
     └── figure_10.png
+```
 
-✔ data/ contains intermediate .mat files
-✔ results/ contains all plots generated automatically
-✔ MATLAB scripts remain in the main folder for easy running
-⚙️ How to Run This Project
-1. Clone the Repository
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+- `data/` stores intermediate `.mat` files.  
+- `results/` stores all generated figures.
 
-2. Open MATLAB
+---
 
-Set MATLAB Current Folder to the repository folder.
+## 3. How to Run the Project
 
-3. Run the main controller script
+### 1️⃣ Clone the repository
 
-In MATLAB:
+```bash
+git clone https://github.com/<your-username>/<your-repo-name>.git
+cd <your-repo-name>
+```
 
+### 2️⃣ Open MATLAB  
+Set the MATLAB **Current Folder** to the repo.
+
+### 3️⃣ Run all modules
+
+```matlab
 run_all_modules
-
+save_all_figures
+```
 
 This will:
 
-Run all five modules
+- Generate all figures  
+- Save `.mat` files into `data/`  
+- Save `.png` figures into `results/`  
 
-Generate all figures
+### Run a specific module
 
-Save .mat files into data/
+```matlab
+module1_signal_modeling
+module2_noise_addition
+module3_filtering
+module4_prediction
+module5_fft_analysis
+```
 
-Save .png figures into results/ (through save_all_figures.m)
+---
 
-All 10 figures will be automatically generated.
+## 4. Module Descriptions
 
-🧩 Module Explanations
+### 🔹 Module 1 — Sensor Modelling
+Generates clean temperature and humidity signals.
 
-This is what each script in your repo does.
+**Outputs:**
+- Clean plots -  figure_1.png, figure_2.png
+- `sensor_true_signals.mat`
 
-🔹 Module 1 — Sensor Signal Modeling
+---
 
-File: module1_signal_modeling.m
+### 🔹 Module 2 — Noise Addition
+Adds Gaussian noise, spikes, and drift.
 
-Generates clean, noise-free sensor signals:
+**Outputs:**
+- Noisy signal plots - figure_3.png, figure_4.png
+- `sensor_noisy_signals.mat`
 
-Temperature model
+---
 
-Base value: 25°C
+### 🔹 Module 3 — Filtering (FIR, IIR, Kalman)
+Applies:
 
-Linear upward trend
+- FIR moving average  
+- IIR exponential smoothing  
+- Kalman filter  
 
-Low-frequency sinusoidal fluctuation
+Selects best filter using MSE.
 
-Humidity model
+**Outputs:**
+- Comparison plots - figure_5.png, figure_6.png
+- `sensor_filtered_signals.mat`
 
-Base: 60%
+---
 
-Slight downward trend
+### 🔹 Module 4 — AR(1) Prediction
 
-Sinusoidal variation with phase shift
+Uses the AR(1) model:
 
-Outputs:
+`x_hat[n] = a * x[n-1]`
 
-Two time-domain clean signals
+where
 
-sensor_true_signals.mat
+`a = ( Σ x[n] * x[n-1] ) / ( Σ x[n-1]^2 )`
 
-🔹 Module 2 — Noise Addition
+**Outputs:**
+- Actual vs predicted plots - figure_7.png, figure_8.png
+- `sensor_prediction_results.mat`
 
-File: module2_noise_addition.m
+---
 
-Adds realistic noise:
+### 🔹 Module 5 — FFT Analysis
+Removes DC, computes FFT, normalizes the spectrum.
 
-Types of noise added:
+**Outputs:**
+- Normalised FFT plots - figure_9.png, figure_10.png
+- `sensor_fft_results.mat`
 
-Gaussian noise
+---
 
-Random spikes
+## 5. Figures Generated
 
-Slow drift (only for temperature)
+- Clean signals  
+- Noisy vs true  
+- Filter comparison  
+- Kalman filter output  
+- AR prediction  
+- FFT of true, noisy, filtered signals  
 
-Outputs:
+All saved inside `results/`.
 
-Noisy temperature
+---
 
-Noisy humidity
+## 6. Requirements
 
-SNR estimation
+- MATLAB R2020a or newer  
+- No extra toolboxes needed  
 
-Comparison plots
+---
 
-sensor_noisy_signals.mat
+## 7. Author
 
-🔹 Module 3 — Filtering (FIR, IIR, Kalman)
+B.Tech EC Minor  
+NITK Surathkal  
 
-File: module3_filtering.m
-
-Applies three filters:
-
-1. FIR Moving Average
-
-Simple linear smoother
-
-Uses convolution
-
-2. IIR Exponential Filter
-
-First-order smoothing
-
-Uses recursive filtering
-
-3. Kalman Filter
-
-Performs prediction + correction
-
-Gives the smoothest output
-
-The script calculates MSE for each filter, then automatically selects:
-
-Best filter for temperature
-
-Best filter for humidity
-
-Outputs:
-
-Filtered signals
-
-Filter performance plots
-
-sensor_filtered_signals.mat
-
-🔹 Module 4 — AR(1) Prediction
-
-File: module4_prediction.m
-
-Steps:
-
-Split data (80% training, 20% test)
-
-Compute AR(1) coefficient
-
-Predict next sample using:
-
-𝑥
-[
-𝑛
-]
-=
-𝑎
-⋅
-𝑥
-[
-𝑛
-−
-1
-]
-x[n]=a⋅x[n−1]
-
-Measure prediction error
-
-Plot actual vs predicted signal
-
-Outputs:
-
-Temperature predictions
-
-Humidity predictions
-
-Prediction error
-
-sensor_prediction_results.mat
-
-🔹 Module 5 — FFT Analysis
-
-File: module5_fft_analysis.m
-
-Computes FFTs for:
-
-True signals
-
-Noisy signals
-
-Filtered signals
-
-Improvements implemented:
-
-Mean removal (to remove DC spike)
-
-Normalised magnitude spectrum
-
-Half-spectrum plotting (0 to Fs/2)
-
-This makes spectral differences clearly visible.
-
-Outputs:
-
-6 FFT plots
-
-sensor_fft_results.mat
-
-🔹 Helper – Save All Figures
-
-File: save_all_figures.m
-
-Automatically saves all open MATLAB figures as:
-
-results/figure_1.png
-results/figure_2.png
-...
-results/figure_10.png
-
-
-No need to manually save anything.
-
-📊 List of Figures Generated
-
-You will get these plots:
-
-Module 1
-
-Clean Temperature
-
-Clean Humidity
-
-Combined plot (dual axis)
-
-Module 2
-
-Temperature: True vs Noisy
-
-Humidity: True vs Noisy
-
-Module 3
-
-Temperature: Filters comparison
-
-Humidity: Filters comparison
-
-Kalman Filter result
-
-Module 4
-
-Temperature: Prediction
-
-Humidity: Prediction
-
-Module 5
-
-Temperature FFT
-
-Humidity FFT
-
-(You may number them differently but total ≈10–12 figures.)
-
-📌 Technologies Used
-
-MATLAB R2020+
-
-DSP Concepts:
-
-FIR Filtering
-
-IIR Filtering
-
-Kalman Filtering
-
-AR Modeling
-
-FFT & Frequency Domain Analysis
-
-📝 Future Improvements
-
-Build a simple MATLAB GUI for interactive filtering
-
-Add anomaly detection using prediction residuals
-
-Add multi-sensor fusion (Kalman 2-D or 3-D)
-
-Deploy model to an IoT microcontroller
-
-🏁 Conclusion
-
-This project connects Signals & Systems concepts with Computer Science + IoT applications.
-It shows how practical sensor data can be cleaned, analyzed, and predicted using DSP techniques.
-
-🙌 Author
-
-Your Name
-B.Tech CSE (Major), EC Minor
-NITK Surathkal
+---
